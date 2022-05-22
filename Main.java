@@ -1,7 +1,13 @@
-class Main {
-    public static void main(String[] args) {
-        System.out.println("Hello, World!");
+import java.util.*;
+import java.io.*;
 
-        //I love mr macphail
+public class Main {
+    public static void main(String[] args) throws IOException {
+        ArrayList<String> traderID = new ArrayList<String>();
+        ArrayList<Integer> numShares = new ArrayList<Integer>();
+        ArrayList<Double> bankRoll = new ArrayList<Double>();
+
+        
+
     }
 }
