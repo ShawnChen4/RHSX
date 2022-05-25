@@ -7,6 +7,7 @@ public class Trader {
     private int sharePositionLimit;
 
     public Trader(String name, double bankRoll, int numShares, int tradeValuePositionLimit, int sharePositionLimit) {
+        //take out trade value position limit, people will just break up big trades if they had a limit per trade
 
         this.name = name;
         this.bankRoll = bankRoll;
