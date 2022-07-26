@@ -9,7 +9,7 @@ asks for buyer's ID
 asks fer sellers ID
 asks for number of shares traded
 asks at what cost basis (price)
-checks if it violates position limits (add and operators)
+checks if it violates position limits (add "and" operators)
 
 if it violates the limit, reset loop
 if it does not violate any limit
