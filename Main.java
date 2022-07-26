@@ -22,5 +22,27 @@ public class Main {
         String costBasis = systemInput.nextLine();
         systemInput.close();
 
+        
+
+    }
+
+    public static int buyerBankroll (int bankroll, int size, int price)
+    {
+        return (bankroll - (size*price));
+    }
+    
+    public static int buyerShareCount (int shareCount, int size)
+    {
+        return (shareCount + size);
+    }
+    
+    public static int sellerBankroll (int bankroll, int size, int price)
+    {
+        return (bankroll + (size*price));
+    }
+    
+    public static int sellerShareCount (int shareCount, int size)
+    {
+        return (shareCount - size);
     }
 }
