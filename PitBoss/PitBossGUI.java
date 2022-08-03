@@ -65,9 +65,9 @@ public class PitBossGUI
     PriceInput = new JTextField(10);
     mainPanel.add(PriceInput);
     
-    //enterButton = new JButton("Enter");
-    //buttonPanel.add(enterButton);
-    //enterButton.addActionListener(new EnterButtonListener());
+    enterButton = new JButton("Enter");
+    buttonPanel.add(enterButton);
+    enterButton.addActionListener(new EnterButtonListener());
     //frame.addKeyListener(EnterKey);
     //keylistener doesn't work
     
