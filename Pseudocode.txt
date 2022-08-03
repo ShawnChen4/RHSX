@@ -13,6 +13,7 @@ checks if it violates position limits (add "and" operators)
 
 if it violates the limit, reset loop
 if it does not violate any limit
+
 calculates buyer bankroll impact and numshare impact
 bankroll = bankroll + number of shares traded * cost basis
 numshare = numshare + number of shares bought
