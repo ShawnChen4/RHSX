@@ -12,7 +12,6 @@ public class PitBossGUI
   static JTextField SellerIDInput;
   static JTextField QuantityInput;
   static JTextField PriceInput;
-  static EnterKeyListener EnterKey;
   
   public static void main(String []args)
   {
