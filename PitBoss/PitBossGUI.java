@@ -72,8 +72,29 @@ public class PitBossGUI
     //keylistener doesn't work
     
     frame.setVisible(true);
-  }
 
+  }
+  
+  public static int buyerBankroll (int bankroll, int size, int price)
+  {
+    return (bankroll - (size*price));
+  }
+  
+  public static int buyerShareCount (int shareCount, int size)
+  {
+    return (shareCount + size);
+  }
+  
+  public static int sellerBankroll (int bankroll, int size, int price)
+  {
+    return (bankroll + (size*price));
+  }
+  
+  public static int sellerShareCount (int shareCount, int size)
+  {
+    return (shareCount - size);
+  }
+  
   public static void printOut()
   {
     System.out.println(BuyerIDInput.getText() + " buys " + QuantityInput.getText() + " shares @" + PriceInput.getText() + " from " + SellerIDInput.getText());
