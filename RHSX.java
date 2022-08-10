@@ -25,5 +25,8 @@ public class RHSX {
 			traders.get(i).printTraderInfo();
 		}
 		
+		RHSX_Interface GUI = new RHSX_Interface();
+		GUI.run();
+		
 	}
 }
