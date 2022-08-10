@@ -66,7 +66,7 @@ public class PitBossGUI
     
     enterButton = new JButton("Enter");
     buttonPanel.add(enterButton);
-    //nterButton.addActionListener(new EnterButtonListener());
+    enterButton.addActionListener(new EnterButtonListener());
     //frame.addKeyListener(EnterKey);
     //keylistener doesn't work
     
@@ -96,7 +96,7 @@ public class PitBossGUI
   
   public static void printOut()
   {
-    System.out.println(BuyerIDInput.getText() + " buys " + QuantityInput.getText() + " shares @" + PriceInput.getText() + " from " + SellerIDInput.getText());
+    System.out.println(BuyerIDInput.getText().toUpperCase() + " buys " + QuantityInput.getText() + " shares @" + PriceInput.getText() + " from " + SellerIDInput.getText().toUpperCase());
     BuyerIDInput.setText("");
     QuantityInput.setText("");
     PriceInput.setText("");
