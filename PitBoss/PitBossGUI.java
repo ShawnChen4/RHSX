@@ -67,7 +67,7 @@ public class PitBossGUI
     
     enterButton = new JButton("Enter");
     buttonPanel.add(enterButton);
-    enterButton.addActionListener(new EnterButtonListener());
+    //nterButton.addActionListener(new EnterButtonListener());
     //frame.addKeyListener(EnterKey);
     //keylistener doesn't work
     
