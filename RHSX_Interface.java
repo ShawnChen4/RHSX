@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.swing.*;
-import java.util.*
+import java.util.*;
 
 
 public class RHSX_Interface {
