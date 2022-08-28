@@ -2,7 +2,6 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
 import java.io.IOException;
-
 import javax.swing.*;
 import java.util.*;
 
@@ -25,7 +24,7 @@ public class RHSX_Interface {
 	private ArrayList<String> properties;
 	private ArrayList<Trader> traders;
 	private File database;
-
+	private Trader[] jcomboArr;
 	
 	RHSX_Interface() {
 		frame = new JFrame("Pitboss");
@@ -95,6 +94,10 @@ public class RHSX_Interface {
 			traders.get(i).printTraderInfo();
 		}
 		
+		jcomboArr = new Trader[traders.size()];
+		for (int i = 0; i < traders.size(); i++) {
+			jcomboArr[i] = traders.get(i);
+		}
 	}
 	
 	public void run() {
