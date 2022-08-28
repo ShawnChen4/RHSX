@@ -10,8 +10,6 @@ public class RHSX_Interface {
 	
 	private GraphicsPanel canvas;
 	private JFrame frame;
-	private JTextField BuyerIDInput;
-	private JTextField SellerIDInput;
 	private JTextField QuantityInput;
 	private JTextField PriceInput;
 	private JLabel BuyerID;
@@ -24,19 +22,22 @@ public class RHSX_Interface {
 	private ArrayList<String> properties;
 	private ArrayList<Trader> traders;
 	private File database;
-	private String[] jcomboArr;
-	private JComboBox dropMenu;
+	private String[] buyerIDArr;
+	private String[] sellerIDArr;
+	private JComboBox buyerDropDown;
+	private JComboBox sellerDropDown;
 	
 	
 	RHSX_Interface() {
 		frame = new JFrame("Pitboss");
+		
 		frame.setSize(1280, 720);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		canvas = new GraphicsPanel();
 		frame.add(canvas);
 		frame.setLayout(new FlowLayout());
 		canvas.setLayout(new GridLayout(2, 4));
-		
+		frame.pack();
 		buttonPanel = new JPanel();
 		frame.add(buttonPanel);
 		
@@ -44,8 +45,6 @@ public class RHSX_Interface {
 	    BuyerID = new JLabel("Enter Buyer ID");
 	    BuyerID.setFont(new Font("Arial", Font.PLAIN, 15));
 	    canvas.add(BuyerID);
-	    
-	    
 	    
 	    SellerID = new JLabel("Enter Seller ID");
 	    SellerID.setFont(new Font("Arial", Font.PLAIN, 15));
@@ -59,17 +58,7 @@ public class RHSX_Interface {
 	    Price.setFont(new Font("Arial", Font.PLAIN, 15));
 	    canvas.add(Price);
 	    
-		frame.pack();
 
-	    
-	    SellerIDInput = new JTextField(10);
-	    canvas.add(SellerIDInput);
-	    
-	    QuantityInput = new JTextField(10);
-	    canvas.add(QuantityInput);
-	    
-	    PriceInput = new JTextField(10);
-	    canvas.add(PriceInput);
 	    
 	    enterButton = new JButton("Enter");
 	    buttonPanel.add(enterButton);
@@ -98,14 +87,26 @@ public class RHSX_Interface {
 			traders.get(i).printTraderInfo();
 		}
 		
-		jcomboArr = new String[traders.size()];
+		buyerIDArr = new String[traders.size()];
+		sellerIDArr = new String[traders.size()];
 		for (int i = 0; i < traders.size(); i++) {
-			jcomboArr[i] = traders.get(i).getTraderID();
+			buyerIDArr[i] = traders.get(i).getTraderID();
+			sellerIDArr[i] = traders.get(i).getTraderID();
 		}
-		
-		dropMenu = new JComboBox(jcomboArr);
-		canvas.add(dropMenu);
+
+		buyerDropDown = new JComboBox(buyerIDArr);
+		canvas.add(buyerDropDown);
 		canvas.repaint();
+
+		sellerDropDown = new JComboBox(buyerIDArr);
+		canvas.add(sellerDropDown);
+		canvas.repaint();
+	    
+	    QuantityInput = new JTextField(10);
+	    canvas.add(QuantityInput);
+	    
+	    PriceInput = new JTextField(10);
+	    canvas.add(PriceInput);
 		
 	}
 	
@@ -118,11 +119,11 @@ public class RHSX_Interface {
 	
 	  public void printOut()
 	  {
-	    System.out.println(BuyerIDInput.getText() + " buys " + QuantityInput.getText() + " shares @" + PriceInput.getText() + " from " + SellerIDInput.getText());
-	    BuyerIDInput.setText("");
-	    QuantityInput.setText("");
+	    System.out.println(buyerDropDown.getSelectedItem() + " buys " + QuantityInput.getText() + " shares @" + PriceInput.getText() + " from " + sellerDropDown.getSelectedItem());
+	    
+		QuantityInput.setText("");
 	    PriceInput.setText("");
-	    SellerIDInput.setText("");
+
 	  }
 	
 	
