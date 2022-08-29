@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import javax.swing.*;
 import java.util.*;
+import javax.swing.BorderFactory;
 
 
 public class RHSX_Interface {
@@ -16,8 +17,10 @@ public class RHSX_Interface {
 	private JLabel SellerID;
 	private JLabel Quantity;
 	private JLabel Price;
+	private JLabel printLabel;
 	private JButton enterButton;
 	private JPanel buttonPanel;
+	private JPanel printoutPanel;
 	private MyKeyListener keyListener; 
 	private ArrayList<String> properties;
 	private ArrayList<Trader> traders;
@@ -26,6 +29,9 @@ public class RHSX_Interface {
 	private String[] sellerIDArr;
 	private JComboBox buyerDropDown;
 	private JComboBox sellerDropDown;
+	private String print = " --- open --- ";
+	private String size;
+	private String price;
 	
 	
 	RHSX_Interface() {
@@ -40,8 +46,17 @@ public class RHSX_Interface {
 		frame.pack();
 		buttonPanel = new JPanel();
 		frame.add(buttonPanel);
+		printoutPanel = new JPanel();
+		printoutPanel.setBorder(BorderFactory.createLineBorder(Color.black));
 		
+		frame.add(printoutPanel);
+
+		printLabel = new JLabel(print);
+		printLabel.setFont(new Font("Arial", Font.PLAIN, 15));
+		printoutPanel.add(printLabel);
+
 		keyListener = new MyKeyListener();
+
 	    BuyerID = new JLabel("Enter Buyer ID");
 	    BuyerID.setFont(new Font("Arial", Font.PLAIN, 15));
 	    canvas.add(BuyerID);
@@ -121,9 +136,14 @@ public class RHSX_Interface {
 	  {
 	    System.out.println(buyerDropDown.getSelectedItem() + " buys " + QuantityInput.getText() + " shares @" + PriceInput.getText() + " from " + sellerDropDown.getSelectedItem());
 	    
+		print = "<html><p>" + buyerDropDown.getSelectedItem() + " buys " + QuantityInput.getText()  + " shares @" + PriceInput.getText() + " from " + sellerDropDown.getSelectedItem() +"<br/>" + print +"</p></html>";
+
+		printLabel.setText(print);
+		
 		QuantityInput.setText("");
 	    PriceInput.setText("");
 
+		
 	  }
 	
 	
