@@ -36,24 +36,19 @@ public class RHSX_Interface {
 	
 	RHSX_Interface() {
 		frame = new JFrame("Pitboss");
-		
 		frame.setSize(1280, 720);
+		frame.setLayout(new FlowLayout());
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		canvas = new GraphicsPanel();
 		frame.add(canvas);
-		frame.setLayout(new FlowLayout());
 		canvas.setLayout(new GridLayout(2, 4));
 		frame.pack();
 		buttonPanel = new JPanel();
 		frame.add(buttonPanel);
-		printoutPanel = new JPanel();
-		printoutPanel.setBorder(BorderFactory.createLineBorder(Color.black));
-		
-		frame.add(printoutPanel);
 
 		printLabel = new JLabel(print);
 		printLabel.setFont(new Font("Arial", Font.PLAIN, 15));
-		printoutPanel.add(printLabel);
+		frame.add(printLabel);
 
 		keyListener = new MyKeyListener();
 
@@ -136,8 +131,9 @@ public class RHSX_Interface {
 	  {
 	    System.out.println(buyerDropDown.getSelectedItem() + " buys " + QuantityInput.getText() + " shares @" + PriceInput.getText() + " from " + sellerDropDown.getSelectedItem());
 	    
-		print = "<html><p>" + buyerDropDown.getSelectedItem() + " buys " + QuantityInput.getText()  + " shares @" + PriceInput.getText() + " from " + sellerDropDown.getSelectedItem() +"<br/>" + print +"</p></html>";
+		//print = "<html><p>" + buyerDropDown.getSelectedItem() + " buys " + QuantityInput.getText()  + " shares @" + PriceInput.getText() + " from " + sellerDropDown.getSelectedItem() +"<br/>" + print +"</p></html>";
 
+		print = buyerDropDown.getSelectedItem() + " buys " + QuantityInput.getText() + " shares @" + PriceInput.getText() + " from " + sellerDropDown.getSelectedItem();
 		printLabel.setText(print);
 		
 		QuantityInput.setText("");
