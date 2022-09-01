@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.swing.*;
 import java.util.*;
 import javax.swing.BorderFactory;
+import javax.swing.plaf.DimensionUIResource;
 
 
 public class RHSX_Interface {
@@ -20,7 +21,6 @@ public class RHSX_Interface {
 	private JLabel printLabel;
 	private JButton enterButton;
 	private JPanel buttonPanel;
-	private JPanel printoutPanel;
 	private MyKeyListener keyListener; 
 	private ArrayList<String> properties;
 	private ArrayList<Trader> traders;
@@ -35,16 +35,16 @@ public class RHSX_Interface {
 	
 	
 	RHSX_Interface() {
+
 		frame = new JFrame("Pitboss");
-		frame.setSize(1280, 720);
 		frame.setLayout(new FlowLayout());
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		canvas = new GraphicsPanel();
 		frame.add(canvas);
 		canvas.setLayout(new GridLayout(2, 4));
-		frame.pack();
 		buttonPanel = new JPanel();
 		frame.add(buttonPanel);
+		frame.setBounds(0, 0, 600, 500);
 
 		printLabel = new JLabel(print);
 		printLabel.setFont(new Font("Arial", Font.PLAIN, 15));
@@ -75,7 +75,7 @@ public class RHSX_Interface {
 	    enterButton.addActionListener(new EnterButtonListener());
 		canvas.addKeyListener(keyListener); 
 		database = new File("Database.txt");
-		frame.setVisible(true);
+		
 		
 	}
 	
@@ -117,6 +117,8 @@ public class RHSX_Interface {
 	    
 	    PriceInput = new JTextField(10);
 	    canvas.add(PriceInput);
+
+		frame.setVisible(true);
 		
 	}
 	
@@ -129,18 +131,20 @@ public class RHSX_Interface {
 	
 	  public void printOut()
 	  {
-	    System.out.println(buyerDropDown.getSelectedItem() + " buys " + QuantityInput.getText() + " shares @" + PriceInput.getText() + " from " + sellerDropDown.getSelectedItem());
+		size = Integer.parseInt(QuantityInput.getText());
+		price =  Math.floor(Double.parseDouble(PriceInput.getText()) * 100) / 100;
 
+	    System.out.println(buyerDropDown.getSelectedItem() + " buys " + size + " shares @" + price + " from " + sellerDropDown.getSelectedItem());
 	    
-		//print = "<html><p>" + buyerDropDown.getSelectedItem() + " buys " + QuantityInput.getText()  + " shares @" + PriceInput.getText() + " from " + sellerDropDown.getSelectedItem() +"<br/>" + print +"</p></html>";
+		print = "<html><p>" + buyerDropDown.getSelectedItem() + " buys " + QuantityInput.getText()  + " shares @" + PriceInput.getText() + " from " + sellerDropDown.getSelectedItem() +"<br/>" + print +"</p></html>";
 
-		print = buyerDropDown.getSelectedItem() + " buys " + QuantityInput.getText() + " shares @" + PriceInput.getText() + " from " + sellerDropDown.getSelectedItem();
+		//print = buyerDropDown.getSelectedItem() + " buys " + size + " shares @" + price + " from " + sellerDropDown.getSelectedItem();
 		printLabel.setText(print);
 
-		traders.get(buyerDropDown.getSelectedIndex()).setTraderBalance( traders.get(buyerDropDown.getSelectedIndex()).getTraderBalance()-(Integer.parseInt(QuantityInput.getText())*Double.parseDouble(PriceInput.getText())));
-		traders.get(buyerDropDown.getSelectedIndex()).setSharesOwned(traders.get(buyerDropDown.getSelectedIndex()).getSharesOwned() + Integer.parseInt(QuantityInput.getText()));
-		traders.get(sellerDropDown.getSelectedIndex()).setTraderBalance( traders.get(sellerDropDown.getSelectedIndex()).getTraderBalance()+(Integer.parseInt(QuantityInput.getText())*Double.parseDouble(PriceInput.getText())));
-		traders.get(sellerDropDown.getSelectedIndex()).setSharesOwned(traders.get(sellerDropDown.getSelectedIndex()).getSharesOwned() - Integer.parseInt(QuantityInput.getText()));
+		traders.get(buyerDropDown.getSelectedIndex()).setTraderBalance( traders.get(buyerDropDown.getSelectedIndex()).getTraderBalance()-(size*price));
+		traders.get(buyerDropDown.getSelectedIndex()).setSharesOwned(traders.get(buyerDropDown.getSelectedIndex()).getSharesOwned() + size);
+		traders.get(sellerDropDown.getSelectedIndex()).setTraderBalance( traders.get(sellerDropDown.getSelectedIndex()).getTraderBalance()+(size*price));
+		traders.get(sellerDropDown.getSelectedIndex()).setSharesOwned(traders.get(sellerDropDown.getSelectedIndex()).getSharesOwned() - size);
 
 
 		for (int i = 0; i < traders.size(); i++) {
