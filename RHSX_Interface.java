@@ -30,8 +30,8 @@ public class RHSX_Interface {
 	private JComboBox buyerDropDown;
 	private JComboBox sellerDropDown;
 	private String print = " --- open --- ";
-	private String size;
-	private String price;
+	private int size ;
+	private double price;
 	
 	
 	RHSX_Interface() {
@@ -130,6 +130,7 @@ public class RHSX_Interface {
 	  public void printOut()
 	  {
 	    System.out.println(buyerDropDown.getSelectedItem() + " buys " + QuantityInput.getText() + " shares @" + PriceInput.getText() + " from " + sellerDropDown.getSelectedItem());
+
 	    
 		//print = "<html><p>" + buyerDropDown.getSelectedItem() + " buys " + QuantityInput.getText()  + " shares @" + PriceInput.getText() + " from " + sellerDropDown.getSelectedItem() +"<br/>" + print +"</p></html>";
 
