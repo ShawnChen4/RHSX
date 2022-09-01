@@ -1,9 +1,9 @@
 public class Trader {
     private String traderID;
     private int sharesOwned;
-    private int traderBalance;
+    private double traderBalance;
 
-    public Trader(String traderID, int sharesOwned, int traderBalance) {
+    public Trader(String traderID, int sharesOwned, double traderBalance) {
         this.traderID = traderID;
         this.sharesOwned = sharesOwned;
         this.traderBalance = traderBalance;
@@ -32,11 +32,11 @@ public class Trader {
         this.sharesOwned = sharesOwned;
     }
 
-    public int getTraderBalance() {
+    public double getTraderBalance() {
         return traderBalance;
     }
 
-    public void setTraderBalance(int traderBalance) {
+    public void setTraderBalance(double traderBalance) {
         this.traderBalance = traderBalance;
     }
 }

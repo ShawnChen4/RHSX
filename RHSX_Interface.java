@@ -90,7 +90,7 @@ public class RHSX_Interface {
 		
 		for (int i = 0; i < properties.size(); i++) {
 			String[] arr = properties.get(i).split("/", 3);
-			traders.add(new Trader(arr[0].toUpperCase(), Integer.parseInt(arr[1]), Integer.parseInt(arr[2])));
+			traders.add(new Trader(arr[0].toUpperCase(), Integer.parseInt(arr[1]), Double.parseDouble(arr[2])));
 		}
 		
 		for (int i = 0; i < traders.size(); i++) {
@@ -135,11 +135,19 @@ public class RHSX_Interface {
 
 		print = buyerDropDown.getSelectedItem() + " buys " + QuantityInput.getText() + " shares @" + PriceInput.getText() + " from " + sellerDropDown.getSelectedItem();
 		printLabel.setText(print);
+
+		traders.get(buyerDropDown.getSelectedIndex()).setTraderBalance( traders.get(buyerDropDown.getSelectedIndex()).getTraderBalance()-(Integer.parseInt(QuantityInput.getText())*Double.parseDouble(PriceInput.getText())));
+		traders.get(buyerDropDown.getSelectedIndex()).setSharesOwned(traders.get(buyerDropDown.getSelectedIndex()).getSharesOwned() + Integer.parseInt(QuantityInput.getText()));
+		traders.get(sellerDropDown.getSelectedIndex()).setTraderBalance( traders.get(sellerDropDown.getSelectedIndex()).getTraderBalance()+(Integer.parseInt(QuantityInput.getText())*Double.parseDouble(PriceInput.getText())));
+		traders.get(sellerDropDown.getSelectedIndex()).setSharesOwned(traders.get(sellerDropDown.getSelectedIndex()).getSharesOwned() - Integer.parseInt(QuantityInput.getText()));
+
+
+		for (int i = 0; i < traders.size(); i++) {
+			traders.get(i).printTraderInfo();
+		}
 		
 		QuantityInput.setText("");
 	    PriceInput.setText("");
-
-		
 	  }
 	
 	
